@@ -15,7 +15,15 @@
         .mannequin {
             position: relative;
             display: inline-block;
-            width: 300px;
+            padding-top: 50px;
+        }
+        #logo {
+            padding-top: 15px;
+        }
+        #click {
+            position: relative;
+            bottom: 340px;
+            left: 100px;
         }
         .body-part {
             position: absolute;
@@ -26,17 +34,32 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .head { top: 20px; left: 122px; }
-        .shoulder { top: 70px; left: 110px; }
-        .chest { top: 110px; left: 122px; }
-        .stomach { top: 160px; left: 113px; }
-        .arm { top: 100px; left: 70px; }
-        .hand { top: 210px; left: 50px; }
-        .leg { top: 285px; left: 105px; }
-        .foot { top: 420px; left: 100px; }
+        .head { top: 60px; left: 175px; }
+        ul {
+            padding-right: 30px;
+        }
+        #symptomList li {
+            cursor: pointer;
+        }
+        .modal-content-custom {
+            background-color: #E2F9E7;
+        }
+        .modal-footer2 button {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            color: white;
+            line-height: 37px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 60px;
+        }
+        .modal-footer {
+            justify-content: center;
+        }
 
-        #logo {
-            padding-top: 15px;
+        .modal-footer2 {
+            padding-bottom: 25px;
         }
     </style>
 </head>
@@ -46,7 +69,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img id="logo" src="/static/healthy-wealthy.png" alt="Logo" width="120" height="85">
+            <img id="logo" src="healthy-wealthy.png" alt="Logo" width="120" height="85">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,22 +89,75 @@
 
 <!-- Main Content -->
 <div class="container my-5">
-    <h1><span>Find the </span>
-        <span style="color: #36A300">Nutrients </span>
-        <p>Your Body Needs</p>
-    </h1>
     <div class="mannequin mt-4">
-        <img src="/static/standing-human-body-silhouette.png" alt="Mannequin" class="img-fluid">
-
-        <!-- Clickable Body Parts -->
+        <img src="standing-human-head.png" alt="Head" class="img-fluid" style="width: 400px">
         <div class="body-part head" data-bodypart="Head" onclick="handleClick(this)">Head</div>
-        <div class="body-part shoulder" data-bodypart="Shoulder" onclick="handleClick(this)">Shoulder</div>
-        <div class="body-part chest" data-bodypart="Chest" onclick="handleClick(this)">Chest</div>
-        <div class="body-part stomach" data-bodypart="Stomach" onclick="handleClick(this)">Stomach</div>
-        <div class="body-part arm" data-bodypart="Arm" onclick="handleClick(this)">Arm</div>
-        <div class="body-part hand" data-bodypart="Hand" onclick="handleClick(this)">Hand</div>
-        <div class="body-part leg" data-bodypart="Leg" onclick="handleClick(this)">Leg</div>
-        <div class="body-part foot" data-bodypart="Foot" onclick="handleClick(this)">Foot</div>
+    </div>
+</div>
+
+<div id="click">
+    <img src="click.png" alt="click" width="95px">
+</div>
+
+<!-- First Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">List of Symptoms</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul id="symptomList">
+                    <li onclick="showSecondModal()">Dry Eyes</li>
+                    <li>Night Blindness</li>
+                    <li>Eye Twitch</li>
+                    <li>Double Vision</li>
+                    <li>Eye Pain</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal -->
+<div class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="secondModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header">
+                <h5 class="modal-title" id="secondModalLabel">Dry Eyes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    The eyes are among the most sensitive tissues in the body, making sufficient levels of Vitamin A and Vitamin D essential. A deficiency in these vitamins can weaken the stability of the tear film and increase inflammation, leading to symptoms of dry eyes. Vitamin A helps maintain the health of the eye's surface, while Vitamin D regulates inflammation and supports tear production, ensuring lubrication and protection of the eyes.</p>
+                <h4>
+                    &nbsp;
+                    1. Vitamin A
+                </h4>
+                <h5>Role:</h5>
+                <ul>
+                    <li>Maintains the health of the cornea and supports the function of the lacrimal glands.</li>
+                    <li>Protects the mucous membranes and epithelial tissues of the eyes, preventing tear evaporation.</li>
+                </ul>
+                <h4>
+                    &nbsp;
+                    2. Vitamin D</h4>
+                <h5>Role:</h5>
+                <ul>
+                    <li>Reduces inflammation in the tear film and promotes tear production.</li>
+                    <li>Regulates autoimmune responses in the eyes, alleviating inflammation associated with dry eye syndrome.</li></ul>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer2">
+                <button style="background-color: #26DA47; border: none;" onclick="window.open('https://www.amazon.com/s?k=vitamin+a&ref=nb_sb_noss', '_blank')">Vitamin A</button>
+                <button style="background-color: #FA9109; border: none;" onclick="window.open('https://www.amazon.com/s?k=vitamin+d&ref=nb_sb_noss', '_blank')">Vitamin D</button>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -90,17 +166,16 @@
     function handleClick(element) {
         const bodyPart = element.getAttribute('data-bodypart');
 
-        // Call the server to get symptoms or nutrient recommendations
-        // fetch(`/symptoms?bodyPart=${bodyPart}`)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         alert(`${bodyPart} Symptoms: ${data.symptoms.join(', ')}`);
-        //         // You can update the page dynamically based on the response
-        //     })
-        //     .catch(error => {
-        //         console.error('Error fetching data:', error);
-        //         alert('Error fetching data');
-        //     });
+        const modal = new bootstrap.Modal(document.getElementById('infoModal'));
+        modal.show();
+    }
+
+    function showSecondModal() {
+        const firstModal = bootstrap.Modal.getInstance(document.getElementById('infoModal'));
+        firstModal.hide();
+
+        const secondModal = new bootstrap.Modal(document.getElementById('secondModal'));
+        secondModal.show();
     }
 </script>
 
